@@ -1,0 +1,14 @@
+{
+	"typescript.tsdk": "./node_modules/typescript/lib",
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+	],
+	// always use relative imports, because our Source files get imported directly from apps
+	"typescript.preferences.importModuleSpecifier": "relative",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+}

@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "tsc (global problem-checking)",
+			"type": "shell",
+			"command": "./node_modules/.bin/tsc",
+			"args": ["--watch", "--noEmit", "--project", "."],
+			"problemMatcher": "$tsc-watch",
+			"isBackground": true,
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+	]
+}

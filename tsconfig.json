@@ -1,0 +1,57 @@
+{
+	"compilerOptions": {
+		"rootDir": "Source",
+		"baseUrl": "Source", // keep commented; this way, we remember to always use relative paths (needed for in-node-modules typescript type-resolving)
+		"paths": { // ("paths" is relative to "baseUrl")
+			/*"*": [
+				"../node_modules/@types/*", // prefer "/node_modules/@types" over "/node_modules/[something]/node_modules/@types" (eg, when using npm link)
+				"*"
+			],*/
+			// remove @types/node and such (conflicts with typescript web definitions)
+			"@types/node": ["Typings/empty.d.ts"],
+			// remove @types/react/global.d.ts, as it breaks the auto-import-finder for react-vcomponents/Text
+			"react/global.d.ts": ["Typings/empty.d.ts"],
+			"react-vextensions/node_modules/react/global.d.ts": ["Typings/empty.d.ts"],
+			"react-vcomponents/node_modules/react/global.d.ts": ["Typings/empty.d.ts"]
+		},
+
+		// general
+		"sourceMap": true,
+		"watch": true,
+		"moduleResolution": "node",
+		//"maxNodeModulesJsDepth": 1,
+
+		// compiler options
+		//"target": "es2015",
+		//"target": "esnext", // babel targets es2015 (ie. transpiles our code to it), so it's fine for TS to target es-next
+		"target": "es2018", // need es2018 for ts-loader (it doesn't understand esnext)
+		/*"lib": [
+			"es5",
+			"es6",
+			"ESNext",
+			"dom"
+		],*/
+
+		//"allowJs": true,
+		"jsx": "react",
+		"noImplicitAny": false,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true
+		//"declaration": true,
+		//"declarationDir": "Dist",
+
+		// needed to fix "cannot find [vwaf file] under rootDir [of some other linked package]" compile error that occurs sometimes
+		//"composite": true
+	},
+	//"files": ["Source/index.ts"],
+	"include": [
+		"./Typings/**/*.d.ts",
+		"./Source/**/*.ts",
+		"./Source/**/*.tsx"
+	],
+	/*"exclude": [
+		"Dist",
+		"node_modules"
+	],*/
+	"compileOnSave": true
+}
